@@ -10,7 +10,6 @@ let posicaoY = randPosition();
 
 //Verifica se o usuário pressionou alguma tecla
 $(document).keydown(function (e) {
-  console.log("tecla: ", e.keyCode);
   jogo.pressionou[e.which] = true;
 });
 
@@ -35,6 +34,8 @@ function loop() {
   moveFundo();
   moveJogador();
   moveInimigo1();
+  moveInimigo2();
+  moveAmigo();
 }
 
 function moveFundo() {
@@ -82,5 +83,27 @@ function moveInimigo1() {
     posicaoY = randPosition();
     $("#inimigo1").css("left", 694);
     $("#inimigo1").css("top", posicaoY);
+  }
+}
+
+// função para mover o inimigo 2, caminhão
+function moveInimigo2() {
+  let posicaoX = parseInt($("#inimigo2").css("left"));
+
+  $("#inimigo2").css("left", posicaoX - 3);
+
+  if (posicaoX <= 0) {
+    $("#inimigo2").css("left", 775);
+  }
+}
+
+// função para mover o amigo, o que vai ser resgatado
+function moveAmigo() {
+  let posicaoX = parseInt($("#amigo").css("left"));
+
+  $("#amigo").css("left", posicaoX + 1);
+
+  if (posicaoX > 906) {
+    $("#amigo").css("left", 0);
   }
 }
