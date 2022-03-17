@@ -4,6 +4,10 @@ const jogo = {
   pressionou: [],
 };
 
+// Configurando a condição para o disparo
+let podeAtirar = true;
+let tempoDisparo;
+
 // Velocidade e posição do inimigo 1
 const velocidade = 5;
 let posicaoY = randPosition();
@@ -68,7 +72,7 @@ function moveJogador() {
   }
 
   if (jogo.pressionou[TECLA.D]) {
-    // chama função disparo
+    disparo(); // chama função disparo
   }
 }
 
@@ -105,5 +109,36 @@ function moveAmigo() {
 
   if (posicaoX > 906) {
     $("#amigo").css("left", 0);
+  }
+}
+
+// função que realiza o disparo da arma do helicóptero cinza
+function disparo() {
+  if (podeAtirar == true) {
+    podeAtirar = false;
+
+    let topo = parseInt($("#jogador").css("top"));
+    let posicaoX = parseInt($("#jogador").css("left"));
+    let tiroX = posicaoX + 190;
+    let topoTiro = topo + 37;
+
+    $("#fundoGame").append("<div id='disparo'></div");
+    $("#disparo").css("top", topoTiro);
+    $("#disparo").css("left", tiroX);
+
+    tempoDisparo = window.setInterval(executaDisparo, 15);
+  }
+
+  // função que realiza o disparo da arma
+  function executaDisparo() {
+    posicaoX = parseInt($("#disparo").css("left"));
+    $("#disparo").css("left", posicaoX + 15);
+
+    if (posicaoX > 900) {
+      window.clearInterval(tempoDisparo);
+      tempoDisparo = null;
+      $("#disparo").remove();
+      podeAtirar = true;
+    }
   }
 }
