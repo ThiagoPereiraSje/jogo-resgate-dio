@@ -203,3 +203,10 @@ body {
   position: absolute;
   background-image: url(../assets/images/disparo.png);
 }
+
+#explosao1 {
+  width: 100px;
+  height: 87px;
+  position: absolute;
+  background-image: url(../assets/images/explosao.png);
+}
