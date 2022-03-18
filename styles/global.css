@@ -197,14 +197,14 @@ body {
   }
 }
 
-#disparo {
+.disparo {
   width: 50px;
   height: 8px;
   position: absolute;
   background-image: url(../assets/images/disparo.png);
 }
 
-#explosao1 {
+.explosao1 {
   width: 100px;
   height: 87px;
   position: absolute;
