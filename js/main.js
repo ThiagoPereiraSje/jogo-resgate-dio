@@ -171,6 +171,22 @@ function explosao1(inimigo1X, inimigo1Y) {
   }, 1000);
 }
 
+// função da explosão, colisão com o inimigo 1, helicóptero
+function explosaoAmigo(inimigo1X, inimigo1Y) {
+  // somExplosao.play();
+
+  $("#fundoGame").append("<div class='explosao-amigo'></div");
+
+  var div = $(".explosao-amigo");
+  div.css("top", inimigo1Y);
+  div.css("left", inimigo1X);
+  div.animate({ width: 44, opacity: 0 }, "slow");
+
+  setTimeout(() => {
+    div.remove();
+  }, 1000);
+}
+
 function reposicionaInimigo1() {
   posicaoY = randPosition();
   $("#inimigo1").css("left", 694);
@@ -268,7 +284,7 @@ function colisao() {
     amigoX = parseInt($("#amigo").css("left"));
     amigoY = parseInt($("#amigo").css("top"));
 
-    explosao1(amigoX, amigoY);
+    explosaoAmigo(amigoX, amigoY);
     $("#amigo").remove();
     reposicionaAmigo();
   }

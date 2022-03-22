@@ -210,3 +210,10 @@ body {
   position: absolute;
   background-image: url(../assets/images/explosao.png);
 }
+
+.explosao-amigo {
+  width: 44px;
+  height: 51px;
+  position: absolute;
+  background-image: url(../assets/images/amigo_morte.png);
+}
