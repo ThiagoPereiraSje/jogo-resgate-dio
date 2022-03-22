@@ -340,6 +340,40 @@ function energia() {
 
   if (energiaAtual === 0) {
     // chamando a função game over
-    //gameOver();
+    gameOver();
   }
+}
+
+// função que avalia o fim de jogo, game over
+function gameOver() {
+  fimDeJogo = true;
+  musica.pause();
+  somGameover.play();
+  window.clearInterval(jogo.timer);
+  jogo.timer = null;
+
+  $("#jogador").remove();
+  $("#inimigo1").remove();
+  $("#inimigo2").remove();
+  $("#amigo").remove();
+  $("#fundoGame").append("<div id='fim'></div>");
+  $("#fim").html(
+    "<h1> Game Over </h1><p>Sua pontuação foi: " +
+      pontos +
+      "</p>" +
+      "<div id='reinicia' onClick=reiniciaJogo()><h3>Jogar Novamente</h3></div>"
+  );
+}
+
+// função que reinicia o jogo novamente
+function reiniciaJogo() {
+  energiaAtual = 3;
+  fimDeJogo = false;
+  pontos = 0;
+  amigosSalvos = 0;
+  amigosPerdidos = 0;
+
+  somGameover.pause();
+  $("#fim").remove();
+  start();
 }
