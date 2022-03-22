@@ -68,7 +68,7 @@ body {
 }
 
 #inicio {
-  width: 350px;
+  width: 400px;
   height: 200px;
   background-color: #fff;
   margin-left: auto;
@@ -259,6 +259,16 @@ body {
 }
 
 h3 {
+  font-family: Titulo;
+  font-size: 20px;
+  color: #603a03;
+}
+
+.instrucoes {
+  text-align: left;
+}
+
+.button {
   font-family: Titulo;
   font-size: 20px;
   color: #603a03;
