@@ -335,7 +335,7 @@ function placar() {
 function energia() {
   $("#energia").css(
     "background-image",
-    `url(../assets/images/energia${energiaAtual}.png)`
+    `url(./assets/images/energia${energiaAtual}.png)`
   );
 
   if (energiaAtual === 0) {
