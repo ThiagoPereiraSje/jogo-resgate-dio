@@ -11,6 +11,8 @@ h1 {
 
 body {
   background-image: url(../assets/images/fundo.jpg);
+  margin: 0;
+  padding: 0;
 }
 
 #container {
@@ -23,7 +25,7 @@ body {
 
 #fundoGame {
   width: 950px;
-  height: 630px;
+  height: 580px;
   background-image: url(../assets/images/fundo_game.jpg);
   border-color: #fff;
   border-style: solid;
@@ -216,4 +218,22 @@ body {
   height: 51px;
   position: absolute;
   background-image: url(../assets/images/amigo_morte.png);
+}
+
+#placar {
+  height: 50px;
+  position: absolute;
+  left: 5px;
+  top: 540px;
+}
+
+#placar h2 {
+  font-family: Titulo;
+  font-size: 20px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+#placar span {
+  margin-left: 50px;
 }

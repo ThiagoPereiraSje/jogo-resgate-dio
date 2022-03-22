@@ -33,6 +33,7 @@ function start() {
   $("#fundoGame").append("<div id='inimigo1' class='anima2'></div>");
   $("#fundoGame").append("<div id='inimigo2'></div>");
   $("#fundoGame").append("<div id='amigo' class='anima3'></div>");
+  $("#fundoGame").append("<div id='placar'></div>");
 
   // Game Loop a cada 30ms
   if (!jogo.timer) {
@@ -47,6 +48,7 @@ function loop() {
   moveInimigo2();
   moveAmigo();
   colisao();
+  placar();
 }
 
 function moveFundo() {
@@ -288,4 +290,17 @@ function colisao() {
     $("#amigo").remove();
     reposicionaAmigo();
   }
+}
+
+// função que soma a pontuação do jogo
+function placar() {
+  $("#placar").html(
+    "<h2> Pontos: " +
+      pontos +
+      " <span>Salvos:</span> " +
+      amigosSalvos +
+      " <span>Perdidos:</span> " +
+      amigosPerdidos +
+      "</h2>"
+  );
 }
