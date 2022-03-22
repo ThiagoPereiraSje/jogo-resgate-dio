@@ -4,6 +4,24 @@ const jogo = {
   pressionou: [],
 };
 
+// Carregando os sons do jogo
+let somDisparo = document.getElementById("somDisparo");
+let somExplosao = document.getElementById("somExplosao");
+let musica = document.getElementById("musica");
+let somGameover = document.getElementById("somGameover");
+let somPerdido = document.getElementById("somPerdido");
+let somResgate = document.getElementById("somResgate");
+
+// Musica em loop
+musica.addEventListener(
+  "ended",
+  function () {
+    musica.currentTime = 0;
+    musica.play();
+  },
+  false
+);
+
 // Configurações do ciclo de jogo
 let fimDeJogo = false;
 
@@ -29,6 +47,8 @@ $(document).keyup(function (e) {
 });
 
 function start() {
+  musica.play();
+
   $("#inicio").hide();
   $("#fundoGame").append("<div id='jogador' class='anima1'></div>");
   $("#fundoGame").append("<div id='inimigo1' class='anima2'></div>");
@@ -145,6 +165,7 @@ function executaDisparo() {
 // função que realiza o disparo da arma do helicóptero cinza
 function disparo() {
   if (podeAtirar == true) {
+    somDisparo.play();
     podeAtirar = false;
 
     let topo = parseInt($("#jogador").css("top"));
@@ -162,7 +183,7 @@ function disparo() {
 
 // função da explosão, colisão com o inimigo 1, helicóptero
 function explosao1(inimigo1X, inimigo1Y) {
-  // somExplosao.play();
+  somExplosao.play();
 
   $("#fundoGame").append("<div class='explosao1'></div");
 
@@ -223,7 +244,7 @@ function colisao() {
 
   // colisão do jogador (helicóptero) com o inimigo1, helicóptero
   if (jogadorInimigo1.length > 0) {
-    energiaAtual--;
+    if (energiaAtual >= 1) energiaAtual--;
 
     inimigo1X = parseInt($("#inimigo1").css("left"));
     inimigo1Y = parseInt($("#inimigo1").css("top"));
@@ -234,7 +255,7 @@ function colisao() {
 
   // colisão do jogador (helicóptero) com o inimigo2, caminhão
   if (jogadorInimigo2.length > 0) {
-    energiaAtual--;
+    if (energiaAtual >= 1) energiaAtual--;
 
     inimigo2X = parseInt($("#inimigo2").css("left"));
     inimigo2Y = parseInt($("#inimigo2").css("top"));
@@ -276,7 +297,7 @@ function colisao() {
 
   // colisão do jogador (helicóptero) com o amigo
   if (jogadorAmigo.length > 0) {
-    // somResgate.play();
+    somResgate.play();
 
     amigosSalvos++;
     $("#amigo").remove();
@@ -285,6 +306,8 @@ function colisao() {
 
   // colisão do amigo com o inimigo 2, caminhão
   if (amigoInimigo2.length > 0) {
+    somPerdido.play();
+
     amigosPerdidos++;
     amigoX = parseInt($("#amigo").css("left"));
     amigoY = parseInt($("#amigo").css("top"));
