@@ -237,3 +237,11 @@ body {
 #placar span {
   margin-left: 50px;
 }
+
+#energia {
+  width: 140px;
+  height: 38px;
+  position: absolute;
+  left: 800px;
+  top: 7px;
+}

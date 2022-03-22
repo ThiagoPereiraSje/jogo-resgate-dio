@@ -13,6 +13,7 @@ let tempoDisparo;
 let pontos = 0;
 let amigosSalvos = 0;
 let amigosPerdidos = 0;
+let energiaAtual = 3;
 
 // Configurações do inimigo 1
 let velocidade = 5;
@@ -34,6 +35,7 @@ function start() {
   $("#fundoGame").append("<div id='inimigo2'></div>");
   $("#fundoGame").append("<div id='amigo' class='anima3'></div>");
   $("#fundoGame").append("<div id='placar'></div>");
+  $("#fundoGame").append("<div id='energia'></div>");
 
   // Game Loop a cada 30ms
   if (!jogo.timer) {
@@ -49,6 +51,7 @@ function loop() {
   moveAmigo();
   colisao();
   placar();
+  energia();
 }
 
 function moveFundo() {
@@ -220,7 +223,7 @@ function colisao() {
 
   // colisão do jogador (helicóptero) com o inimigo1, helicóptero
   if (jogadorInimigo1.length > 0) {
-    // energiaAtual--;
+    energiaAtual--;
 
     inimigo1X = parseInt($("#inimigo1").css("left"));
     inimigo1Y = parseInt($("#inimigo1").css("top"));
@@ -231,7 +234,7 @@ function colisao() {
 
   // colisão do jogador (helicóptero) com o inimigo2, caminhão
   if (jogadorInimigo2.length > 0) {
-    // energiaAtual--;
+    energiaAtual--;
 
     inimigo2X = parseInt($("#inimigo2").css("left"));
     inimigo2Y = parseInt($("#inimigo2").css("top"));
@@ -303,4 +306,17 @@ function placar() {
       amigosPerdidos +
       "</h2>"
   );
+}
+
+// função que avalia a energia (vida) do jogador, helicóptero cinza
+function energia() {
+  $("#energia").css(
+    "background-image",
+    `url(../assets/images/energia${energiaAtual}.png)`
+  );
+
+  if (energiaAtual === 0) {
+    // chamando a função game over
+    //gameOver();
+  }
 }
